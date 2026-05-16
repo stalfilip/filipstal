@@ -1,0 +1,41 @@
+import type { Recipe } from "./types";
+
+export const creamyBeefSweetPotatoMisoBroccoli: Recipe = {
+  slug: "creamy-beef-sweet-potato-miso-broccoli",
+  title: "Creamy Beef Patties with Sweet Potato & Miso-Coconut Broccoli",
+  author: "Filip",
+  headnote:
+    "A meal-prep workhorse. Big batch of patties bound with coconut-soaked bread instead of breadcrumbs (keeps them tender for days), roasted sweet potato wedges on the side, and broccoli finished in a quick miso-coconut sauce with lime. Reheats well.",
+  totalTimeMinutes: 75,
+  baseServings: 4,
+  image: { src: "", alt: "Creamy beef patties with roasted sweet potato wedges and miso-coconut broccoli" },
+  tags: ["Mealprep"],
+  ingredients: [
+    { amount: 900, note: "g", item: "Ground beef (12–15% fat)" },
+    { item: "2 bread rolls or pieces of stale white bread" },
+    { amount: 400, note: "ml", item: "Coconut cream (for the patties)" },
+    { item: "1 yellow onion, finely grated" },
+    { item: "1 egg" },
+    { item: "1 tsp Dijon mustard" },
+    { item: "Fresh parsley, chopped" },
+    { amount: 0.75, unit: "tsp", item: "Dried oregano" },
+    { item: "Salt and black pepper" },
+    { item: "6–7 medium sweet potatoes" },
+    { item: "Olive oil (for the sweet potatoes)" },
+    { item: "2 large heads of broccoli" },
+    { item: "2 cloves garlic" },
+    { amount: 200, note: "ml", item: "Coconut cream (for the broccoli sauce)" },
+    { item: "1–2 tbsp white or yellow miso" },
+    { item: "1 lime (juice + zest)" },
+    { item: "Chili flakes" },
+    { item: "Pine nuts, to finish" },
+    { item: "Neutral oil, for frying" },
+  ],
+  steps: [
+    "Heat the oven to 200°C. Cut the sweet potatoes into wedges, toss with olive oil, salt and pepper. Roast 30–35 min until soft and a bit charred at the edges. You'll need two trays — spread them out properly so they roast and don't steam.",
+    "Tear the bread roughly and soak in 400ml coconut cream for 5–10 min until it's a loose porridge. Grate the onion fine. Mix everything with the beef, egg, Dijon and seasonings. Rest 15–20 min in the fridge. Shape 12 patties with a little dimple in the middle.",
+    "Cut the broccoli into florets and blanch 2 min in salted water, then shock in cold water. Fry the garlic in oil on medium heat for 30 seconds, pour in the coconut cream and miso, stir smooth. Simmer 2–3 min. Fold in the broccoli, taste with lime juice, zest and chili flakes.",
+    "Fry the patties in oil 3–4 min per side on medium heat — work in batches so the pan doesn't crowd. Rest 2 min under foil.",
+    "Serve the sweet potatoes, patties and broccoli together. Scatter with pine nuts.",
+  ],
+};

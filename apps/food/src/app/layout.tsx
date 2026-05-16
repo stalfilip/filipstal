@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import { Source_Serif_4, Inter } from "next/font/google";
+import { Source_Serif_4, Geist } from "next/font/google";
 import "./globals.css";
+import { cn } from "@/lib/utils";
+import { Nav } from "./nav";
 
 const serif = Source_Serif_4({
   variable: "--font-serif",
@@ -9,11 +11,7 @@ const serif = Source_Serif_4({
   style: ["normal", "italic"],
 });
 
-const sans = Inter({
-  variable: "--font-sans",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-});
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 export const metadata: Metadata = {
   title: "Food",
@@ -24,8 +22,9 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${serif.variable} ${sans.variable}`}>
+    <html lang="en" className={cn(serif.variable, "font-sans", geist.variable)}>
       <body className="min-h-screen bg-cream text-ink antialiased">
+        <Nav />
         {children}
       </body>
     </html>

@@ -1,16 +1,23 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import type { Ingredient } from "@/lib/recipes/fish-milanese";
+import type { Ingredient } from "@/lib/recipes/types";
+import { formatQty, type System } from "@/lib/units";
+import {
+  ToggleGroup,
+  ToggleGroupItem,
+} from "@/components/ui/toggle-group";
 
 interface Props {
   ingredients: Ingredient[];
-  servings: string;
+  baseServings: number;
   slug: string;
 }
 
-export function IngredientsSection({ ingredients, servings, slug }: Props) {
+export function IngredientsSection({ ingredients, baseServings, slug }: Props) {
   const [tab, setTab] = useState<"ingredients" | "shopping">("ingredients");
+  const [system, setSystem] = useState<System>("metric");
+  const [servingsInput, setServingsInput] = useState<string>(String(baseServings));
   const [checked, setChecked] = useState<Set<number>>(new Set());
 
   const storageKey = `shopping-${slug}`;
@@ -22,7 +29,7 @@ export function IngredientsSection({ ingredients, servings, slug }: Props) {
     } catch {}
   }, [storageKey]);
 
-  function toggle(i: number) {
+  function toggleItem(i: number) {
     setChecked((prev) => {
       const next = new Set(prev);
       next.has(i) ? next.delete(i) : next.add(i);
@@ -36,101 +43,105 @@ export function IngredientsSection({ ingredients, servings, slug }: Props) {
     localStorage.removeItem(storageKey);
   }
 
+  const parsed = Number(servingsInput);
+  const servings =
+    Number.isFinite(parsed) && parsed > 0 ? parsed : baseServings;
+  const showShopping = tab === "shopping";
+
   return (
     <section className="md:col-span-5">
-      {/* Toggle header */}
-      <div className="flex items-baseline gap-5">
-        <button
-          onClick={() => setTab("ingredients")}
-          className={`font-display text-2xl tracking-tight transition ${
-            tab === "ingredients"
-              ? "text-ink"
-              : "text-ink-muted hover:text-ink"
-          }`}
+      <ToggleGroup
+        value={[tab]}
+        onValueChange={(vals) => {
+          if (vals.length > 0) setTab(vals[0] as typeof tab);
+        }}
+      >
+        <ToggleGroupItem value="ingredients">Ingredients</ToggleGroupItem>
+        <ToggleGroupItem value="shopping">Shopping list</ToggleGroupItem>
+      </ToggleGroup>
+
+      <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-[11px] uppercase tracking-wider text-ink-muted">
+        <label className="flex items-center gap-2">
+          <span>Servings</span>
+          <input
+            type="number"
+            min={1}
+            inputMode="numeric"
+            value={servingsInput}
+            onChange={(e) => setServingsInput(e.target.value)}
+            onBlur={() => {
+              if (!(Number(servingsInput) > 0)) setServingsInput(String(baseServings));
+            }}
+            className="w-14 rounded-md border border-rule bg-transparent px-2 py-0.5 font-display text-[14px] normal-case tracking-normal text-ink tabular-nums focus:border-brand focus:outline-none"
+          />
+        </label>
+        <ToggleGroup
+          value={[system]}
+          onValueChange={(vals) => {
+            if (vals.length > 0) setSystem(vals[0] as System);
+          }}
         >
-          Ingredients
-        </button>
-        <span className="text-rule select-none">|</span>
-        <button
-          onClick={() => setTab("shopping")}
-          className={`font-display text-2xl tracking-tight transition ${
-            tab === "shopping"
-              ? "text-ink"
-              : "text-ink-muted hover:text-ink"
-          }`}
-        >
-          Shopping list
-        </button>
+          <ToggleGroupItem value="metric">Metric</ToggleGroupItem>
+          <ToggleGroupItem value="us">US</ToggleGroupItem>
+        </ToggleGroup>
       </div>
 
-      <p className="mt-1 text-[11px] uppercase tracking-wider text-ink-muted">
-        {servings}
-      </p>
-
-      {tab === "ingredients" ? (
-        <ul className="mt-5 divide-y divide-rule">
-          {ingredients.map((ing, i) => (
-            <li key={i} className="flex gap-4 py-3">
+      <ul className="mt-5 divide-y divide-rule">
+        {ingredients.map((ing, i) => {
+          const qty = formatQty(ing, servings, baseServings, system);
+          const done = showShopping && checked.has(i);
+          return (
+            <li
+              key={i}
+              className={`relative flex gap-4 py-3 ${showShopping ? "cursor-pointer" : ""}`}
+              onClick={showShopping ? () => toggleItem(i) : undefined}
+            >
+              {showShopping && (
+                <span
+                  className={`absolute -left-9 top-3.5 flex h-4 w-4 items-center justify-center rounded-sm border transition sm:-left-10 ${
+                    done
+                      ? "border-brand bg-brand"
+                      : "border-ink-muted bg-transparent"
+                  }`}
+                >
+                  {done && (
+                    <svg
+                      viewBox="0 0 10 8"
+                      className="h-2.5 w-2.5 fill-none stroke-cream stroke-[1.8]"
+                    >
+                      <polyline points="1,4 4,7 9,1" />
+                    </svg>
+                  )}
+                </span>
+              )}
+              {done && (
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-x-0 top-[1.55rem] h-px bg-ink-muted"
+                />
+              )}
               <span className="min-w-[5.5rem] font-display text-[14px] tabular-nums text-ink-muted">
-                {ing.qty ?? ""}
+                {qty}
               </span>
-              <span className="font-display text-[16px] leading-snug text-ink">
+              <span
+                className={`font-display text-[16px] leading-snug transition ${
+                  done ? "text-ink-muted" : "text-ink"
+                }`}
+              >
                 {ing.item}
               </span>
             </li>
-          ))}
-        </ul>
-      ) : (
-        <>
-          <ul className="mt-5 divide-y divide-rule">
-            {ingredients.map((ing, i) => {
-              const done = checked.has(i);
-              return (
-                <li
-                  key={i}
-                  className="flex cursor-pointer items-start gap-3 py-3"
-                  onClick={() => toggle(i)}
-                >
-                  <span
-                    className={`mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-sm border transition ${
-                      done
-                        ? "border-accent bg-accent"
-                        : "border-ink-muted bg-transparent"
-                    }`}
-                  >
-                    {done && (
-                      <svg
-                        viewBox="0 0 10 8"
-                        className="h-2.5 w-2.5 fill-none stroke-cream stroke-[1.8]"
-                      >
-                        <polyline points="1,4 4,7 9,1" />
-                      </svg>
-                    )}
-                  </span>
-                  <span
-                    className={`font-display text-[16px] leading-snug transition ${
-                      done ? "text-ink-muted line-through" : "text-ink"
-                    }`}
-                  >
-                    {ing.qty && (
-                      <span className="tabular-nums">{ing.qty} </span>
-                    )}
-                    {ing.item}
-                  </span>
-                </li>
-              );
-            })}
-          </ul>
+          );
+        })}
+      </ul>
 
-          {checked.size > 0 && (
-            <button
-              onClick={clearAll}
-              className="mt-4 text-[11px] uppercase tracking-[0.16em] text-ink-muted underline-offset-2 hover:underline"
-            >
-              Clear all
-            </button>
-          )}
-        </>
+      {showShopping && checked.size > 0 && (
+        <button
+          onClick={clearAll}
+          className="mt-4 text-[11px] uppercase tracking-[0.16em] text-ink-muted underline-offset-2 hover:underline"
+        >
+          Clear all
+        </button>
       )}
     </section>
   );
