@@ -93,12 +93,14 @@ export function IngredientsSection({ ingredients, baseServings, slug }: Props) {
           return (
             <li
               key={i}
-              className={`relative flex gap-4 py-3 ${showShopping ? "cursor-pointer" : ""}`}
+              className={`flex items-start gap-3 py-3 sm:gap-4 ${
+                showShopping ? "cursor-pointer md:relative" : ""
+              }`}
               onClick={showShopping ? () => toggleItem(i) : undefined}
             >
               {showShopping && (
                 <span
-                  className={`absolute -left-9 top-3.5 flex h-4 w-4 items-center justify-center rounded-sm border transition sm:-left-10 ${
+                  className={`mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-sm border transition md:absolute md:-left-9 md:top-3.5 md:mt-0 ${
                     done
                       ? "border-brand bg-brand"
                       : "border-ink-muted bg-transparent"
@@ -114,18 +116,16 @@ export function IngredientsSection({ ingredients, baseServings, slug }: Props) {
                   )}
                 </span>
               )}
-              {done && (
-                <span
-                  aria-hidden="true"
-                  className="pointer-events-none absolute inset-x-0 top-[1.55rem] h-px bg-ink-muted"
-                />
-              )}
-              <span className="min-w-[5.5rem] font-display text-[14px] tabular-nums text-ink-muted">
+              <span
+                className={`min-w-[3.5rem] font-display text-[14px] tabular-nums text-ink-muted sm:min-w-[5.5rem] ${
+                  done ? "line-through" : ""
+                }`}
+              >
                 {qty}
               </span>
               <span
-                className={`font-display text-[16px] leading-snug transition ${
-                  done ? "text-ink-muted" : "text-ink"
+                className={`flex-1 font-display text-[15px] leading-snug transition sm:text-[16px] ${
+                  done ? "text-ink-muted line-through" : "text-ink"
                 }`}
               >
                 {ing.item}
