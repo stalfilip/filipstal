@@ -1,23 +1,14 @@
 {
-  "name": "food",
-  "version": "0.1.0",
+  "name": "filipstal",
+  "version": "0.0.0",
   "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
-  },
-  "dependencies": {
-    "next": "16.2.6",
-    "react": "19.2.4",
-    "react-dom": "19.2.4"
-  },
-  "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "dev:food": "npm run dev --workspace=food",
+    "dev:www": "npm run dev --workspace=www",
+    "build:food": "npm run build --workspace=food",
+    "build:www": "npm run build --workspace=www"
   }
 }

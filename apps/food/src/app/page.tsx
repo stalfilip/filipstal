@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { fishMilanese as recipe } from "@/lib/recipes/fish-milanese";
+import { IngredientsSection } from "./ingredients-section";
 
 function formatTime(min: number) {
   if (min < 60) return `${min} min`;
@@ -70,27 +71,11 @@ export default function Page() {
 
       {/* Ingredients + Steps */}
       <div className="mt-14 grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-16">
-        <section className="md:col-span-5">
-          <h2 className="font-display text-2xl tracking-tight text-ink">
-            Ingredients
-          </h2>
-          <p className="mt-1 text-[11px] uppercase tracking-wider text-ink-muted">
-            {recipe.servings}
-          </p>
-
-          <ul className="mt-5 divide-y divide-rule">
-            {recipe.ingredients.map((ing, i) => (
-              <li key={i} className="flex gap-4 py-3">
-                <span className="min-w-[5.5rem] font-display text-[14px] tabular-nums text-ink-muted">
-                  {ing.qty ?? ""}
-                </span>
-                <span className="font-display text-[16px] leading-snug text-ink">
-                  {ing.item}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </section>
+        <IngredientsSection
+          ingredients={recipe.ingredients}
+          servings={recipe.servings}
+          slug={recipe.slug}
+        />
 
         <section className="md:col-span-7">
           <h2 className="font-display text-2xl tracking-tight text-ink">
