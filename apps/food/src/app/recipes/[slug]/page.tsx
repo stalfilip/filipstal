@@ -24,22 +24,22 @@ export default async function RecipePage({
   if (!recipe) notFound();
 
   return (
-    <main className="mx-auto max-w-[1100px] px-5 py-10 sm:px-8 sm:py-14">
-      <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-16">
+    <main className="mx-auto max-w-[1100px] px-5 py-8 sm:px-8 sm:py-14">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-16">
         <div className="flex flex-col justify-center">
           {recipe.tags && recipe.tags.length > 0 && (
-            <p className="mb-3 text-[11px] uppercase tracking-[0.22em] text-brand">
+            <p className="mb-2 text-[11px] uppercase tracking-[0.22em] text-brand sm:mb-3">
               {recipe.tags.join(" · ")}
             </p>
           )}
-          <h1 className="font-display text-4xl leading-[1.1] tracking-tight text-ink sm:text-5xl">
+          <h1 className="font-display text-[2rem] leading-[1.1] tracking-tight text-ink sm:text-5xl">
             {recipe.title}
           </h1>
-          <p className="mt-3 font-display text-[15px] italic text-ink-muted">
+          <p className="mt-2 font-display text-[15px] italic text-ink-muted sm:mt-3">
             By {recipe.author}
           </p>
 
-          <hr className="my-5 border-rule" />
+          <hr className="my-4 border-rule sm:my-5" />
 
           <dl className="space-y-2">
             <MetaRow label="Total time" value={formatTime(recipe.totalTimeMinutes)} />
@@ -49,7 +49,7 @@ export default async function RecipePage({
 
         <div>
           <figure>
-            <div className="relative aspect-[3/2] w-full overflow-hidden rounded-sm bg-rule">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm bg-rule sm:aspect-[3/2]">
               {recipe.image.src ? (
                 <Image
                   src={recipe.image.src}
@@ -72,13 +72,13 @@ export default async function RecipePage({
             )}
           </figure>
 
-          <p className="mt-5 font-display text-[17px] leading-[1.6] text-ink/85">
+          <p className="mt-4 font-display text-[16px] leading-[1.6] text-ink/85 sm:mt-5 sm:text-[17px]">
             {recipe.headnote}
           </p>
         </div>
       </div>
 
-      <div className="mt-14 grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-16">
+      <div className="mt-10 grid grid-cols-1 gap-10 sm:mt-14 md:grid-cols-12 md:gap-16">
         <IngredientsSection
           ingredients={recipe.ingredients}
           baseServings={recipe.baseServings}
@@ -86,16 +86,16 @@ export default async function RecipePage({
         />
 
         <section className="md:col-span-7">
-          <h2 className="font-display text-2xl tracking-tight text-ink">
+          <h2 className="font-display text-xl tracking-tight text-ink sm:text-2xl">
             Preparation
           </h2>
-          <ol className="mt-5 space-y-8">
+          <ol className="mt-4 space-y-6 sm:mt-5 sm:space-y-8">
             {recipe.steps.map((step, i) => (
-              <li key={i} className="grid grid-cols-[2.5rem_1fr] gap-4">
-                <span className="font-display text-2xl leading-none text-brand">
+              <li key={i} className="grid grid-cols-[2rem_1fr] gap-3 sm:grid-cols-[2.5rem_1fr] sm:gap-4">
+                <span className="font-display text-xl leading-none text-brand sm:text-2xl">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <p className="font-display text-[17px] leading-[1.65] text-ink">
+                <p className="font-display text-[16px] leading-[1.6] text-ink sm:text-[17px] sm:leading-[1.65]">
                   {step}
                 </p>
               </li>

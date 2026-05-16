@@ -11,17 +11,17 @@ function formatTime(min: number) {
 
 export default function Page() {
   return (
-    <main className="mx-auto max-w-[1100px] px-5 py-10 sm:px-8 sm:py-14">
-      <header className="mb-10 sm:mb-14">
-        <p className="mb-3 text-[11px] uppercase tracking-[0.22em] text-brand">
+    <main className="mx-auto max-w-[1100px] px-5 py-8 sm:px-8 sm:py-14">
+      <header className="mb-8 sm:mb-14">
+        <p className="mb-2 text-[11px] uppercase tracking-[0.22em] text-brand sm:mb-3">
           Recipes
         </p>
-        <h1 className="font-display text-4xl leading-[1.1] tracking-tight text-ink sm:text-5xl">
+        <h1 className="font-display text-[2rem] leading-[1.1] tracking-tight text-ink sm:text-5xl">
           All recipes
         </h1>
       </header>
 
-      <ul className="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+      <ul className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-12 lg:grid-cols-3">
         {allRecipes.map((recipe) => (
           <li key={recipe.slug}>
             <Link
