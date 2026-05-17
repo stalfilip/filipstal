@@ -6,6 +6,9 @@ export type Ingredient = {
   densityGPerMl?: number;
   note?: string;
   item: string;
+  group?: string;
+  shoppingItem?: string;
+  pantry?: boolean;
 };
 
 export type Recipe = {

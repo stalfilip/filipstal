@@ -12,8 +12,8 @@ export const pommesDarphin: Recipe = {
   tags: ["Side", "Fancy Pancy"],
   ingredients: [
     { item: "Potatoes (starchy, like russets), peeled" },
-    { item: "Butter (plenty — don't skimp)" },
-    { item: "Salt and black pepper" },
+    { item: "Butter (plenty — don't skimp)", pantry: true, shoppingItem: "Butter" },
+    { item: "Salt and black pepper", pantry: true, shoppingItem: "Salt and pepper" },
   ],
   steps: [
     "Grate the raw potatoes coarsely. Squeeze the liquid out hard with your hands or in a clean towel.",
