@@ -8,7 +8,7 @@ export const danishRyeBread: Recipe = {
     "Two dense, seed-heavy loaves, the kind that hold up a thick slice of cheese. Long ferment, lots of cracked rye and sunflower seeds, a little dark syrup. Plan ahead: starter feed in the morning, mix in the afternoon, proof overnight, bake the next morning.",
   totalTimeMinutes: 1500,
   baseServings: 2,
-  image: { src: "/recipes/danish-rye-bread.jpg", alt: "Sliced loaf of dark, seed-packed Danish rye bread on a cutting board" },
+  images: [{ src: "/recipes/danish-rye-bread.jpg", alt: "Sliced loaf of dark, seed-packed Danish rye bread on a cutting board" }],
   ingredients: [
     { amount: 200, note: "g", item: "Sourdough starter", group: "Pre-dough" },
     { amount: 200, note: "g", item: "Finely milled rye flour", group: "Pre-dough" },

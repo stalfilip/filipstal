@@ -8,7 +8,7 @@ export const pommesDarphin: Recipe = {
     "A grated-potato cake fried in plenty of butter — crisp and golden outside, tender within. Goes with everything roasted or seared.",
   totalTimeMinutes: 25,
   baseServings: 4,
-  image: { src: "/recipes/pommes-darphin.jpg", alt: "Two crisp, golden-brown pommes darphin potato cakes" },
+  images: [{ src: "/recipes/pommes-darphin.jpg", alt: "Two crisp, golden-brown pommes darphin potato cakes" }],
   tags: ["Side", "Fancy Pancy"],
   ingredients: [
     { item: "Potatoes (starchy, like russets), peeled" },

@@ -1,7 +1,7 @@
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { allRecipes, getRecipeBySlug } from "@/lib/recipes";
 import { IngredientsSection } from "@/app/ingredients-section";
+import { RecipeCarousel } from "@/app/recipe-carousel";
 
 export function generateStaticParams() {
   return allRecipes.map((r) => ({ slug: r.slug }));
@@ -48,29 +48,7 @@ export default async function RecipePage({
         </div>
 
         <div>
-          <figure>
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm bg-rule sm:aspect-[3/2]">
-              {recipe.image.src ? (
-                <Image
-                  src={recipe.image.src}
-                  alt={recipe.image.alt}
-                  fill
-                  priority
-                  sizes="(min-width: 768px) 50vw, 100vw"
-                  className="object-cover"
-                />
-              ) : (
-                <div className="flex h-full w-full items-center justify-center text-[11px] uppercase tracking-[0.22em] text-ink-muted">
-                  No photo yet
-                </div>
-              )}
-            </div>
-            {recipe.image.credit && (
-              <figcaption className="mt-1.5 text-right text-[10px] uppercase tracking-wider text-ink-muted">
-                {recipe.image.credit}
-              </figcaption>
-            )}
-          </figure>
+          <RecipeCarousel images={recipe.images} />
 
           <p className="mt-4 font-display text-[16px] leading-[1.6] text-ink/85 sm:mt-5 sm:text-[17px]">
             {recipe.headnote}

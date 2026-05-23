@@ -11,6 +11,8 @@ export type Ingredient = {
   pantry?: boolean;
 };
 
+export type RecipeImage = { src: string; alt: string; credit?: string };
+
 export type Recipe = {
   slug: string;
   title: string;
@@ -18,7 +20,7 @@ export type Recipe = {
   headnote: string;
   totalTimeMinutes: number;
   baseServings: number;
-  image: { src: string; alt: string; credit?: string };
+  images: RecipeImage[];
   ingredients: Ingredient[];
   steps: string[];
   tags?: string[];

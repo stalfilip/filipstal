@@ -8,7 +8,11 @@ export const nyBagels: Recipe = {
     "A simple one-day recipe (well, plus an overnight cold proof). Eight chewy, well-blistered bagels at about 128g each. The cold rest in the fridge is where the flavor and crust come from — don't skip it.",
   totalTimeMinutes: 90,
   baseServings: 8,
-  image: { src: "/recipes/ny-bagels.jpg", alt: "Everything bagels and plain bagels on a parchment-lined tray" },
+  images: [
+    { src: "/recipes/ny-bagels.jpg", alt: "Three everything bagels piled on a striped linen cloth" },
+    { src: "/recipes/ny-bagels-shaped.jpg", alt: "Eight shaped bagels on a cornmeal-dusted tray under plastic wrap, ready to proof" },
+    { src: "/recipes/ny-bagels-baked.jpg", alt: "Fresh-baked everything and plain bagels cooling on a wire rack" },
+  ],
   ingredients: [
     { amount: 600, note: "g", item: "Bread flour", group: "Dough" },
     { amount: 360, note: "ml", item: "Water (32°C)", group: "Dough", pantry: true, shoppingItem: "Water" },
@@ -26,7 +30,7 @@ export const nyBagels: Recipe = {
     { amount: 12, note: "g", item: "Flake salt", group: "Everything topping" },
   ],
   steps: [
-    "Dissolve the yeast and malt syrup in the warm water. Mix with flour and salt. Knead 15–20 min, until it passes the windowpane test — at least that long.",
+    "Dissolve the yeast and malt syrup in the warm water. Mix with flour and salt. Knead 10 min, then let the dough rest 5 min — this gives the gluten a chance to relax. Then knead another 5–10 min until it passes the windowpane test.",
     "Rest covered 30–45 min at room temperature.",
     "Divide into 8 pieces (~128g). Shape into bagels.",
     "Place on a cornmeal-dusted tray. Cover with oiled plastic wrap and leave at room temperature until they look visibly puffier — they shouldn't be fully proofed, but they should have some life in them. Then refrigerate overnight.",

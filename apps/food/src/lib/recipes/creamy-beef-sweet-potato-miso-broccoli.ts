@@ -8,7 +8,7 @@ export const creamyBeefSweetPotatoMisoBroccoli: Recipe = {
     "A meal-prep workhorse. Big batch of patties bound with coconut-soaked bread instead of breadcrumbs (keeps them tender for days), roasted sweet potato wedges on the side, and broccoli finished in a quick miso-coconut sauce with lime. Reheats well.",
   totalTimeMinutes: 75,
   baseServings: 4,
-  image: { src: "/recipes/creamy-beef-sweet-potato-miso-broccoli.jpg", alt: "Meal-prep boxes filled with roasted sweet potato, broccoli and beef" },
+  images: [{ src: "/recipes/creamy-beef-sweet-potato-miso-broccoli.jpg", alt: "Meal-prep boxes filled with roasted sweet potato, broccoli and beef" }],
   tags: ["Mealprep"],
   ingredients: [
     { amount: 900, note: "g", item: "Ground beef (12–15% fat)", group: "Patties" },

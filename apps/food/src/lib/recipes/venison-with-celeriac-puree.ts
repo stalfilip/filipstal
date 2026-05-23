@@ -8,11 +8,11 @@ export const venisonWithCeleriacPuree: Recipe = {
     "A proper Sunday plate. Loin seared hard then finished low and slow to medium-rare, a silky celeriac purée under everything, butter-glazed carrots with toasted hazelnuts on top, and a reduced cream-and-juniper sauce with lingonberries. Time the puree to land hot, just as the meat comes out of the oven to rest.",
   totalTimeMinutes: 90,
   baseServings: 4,
-  image: {
+  images: [{
     src: "/recipes/venison-with-celeriac-puree.jpg",
     alt: "Roasted venison loin with chestnut purée, chard and a dark sauce",
     credit: "Photo by Lou Stejskal, via Wikimedia Commons (CC BY 2.0)",
-  },
+  }],
   tags: ["Fancy Pancy"],
   ingredients: [
     { item: "Fallow deer loin (~600–800g)", group: "Venison" },

@@ -29,10 +29,10 @@ export default function Page() {
               className="group block focus:outline-none"
             >
               <div className="relative aspect-[3/2] w-full overflow-hidden rounded-sm bg-rule">
-                {recipe.image.src ? (
+                {recipe.images[0]?.src ? (
                   <Image
-                    src={recipe.image.src}
-                    alt={recipe.image.alt}
+                    src={recipe.images[0].src}
+                    alt={recipe.images[0].alt}
                     fill
                     sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                     className="object-cover transition duration-300 group-hover:scale-[1.02]"

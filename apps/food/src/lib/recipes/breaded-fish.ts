@@ -8,7 +8,7 @@ export const breadedFish: Recipe = {
     "A weeknight Swedish staple. Thin white fish gets a panko coat and bakes in the oven until golden and crisp, while a cold dill sauce comes together in a bowl and the potatoes boil away. Everything lands on the plate at the same time with almost no active work.",
   totalTimeMinutes: 45,
   baseServings: 4,
-  image: { src: "/recipes/breaded-fish.jpg", alt: "Breaded fish fillet on a grey patterned plate with dill sauce, green peas, boiled potatoes and a lemon wedge" },
+  images: [{ src: "/recipes/breaded-fish.jpg", alt: "Breaded fish fillet on a grey patterned plate with dill sauce, green peas, boiled potatoes and a lemon wedge" }],
   ingredients: [
     { amount: 600, note: "g", item: "White fish fillets (cod, haddock, pollock)", group: "Fish" },
     { amount: 0.5, unit: "cup", densityGPerMl: 0.55, item: "All-purpose flour", group: "Fish" },
