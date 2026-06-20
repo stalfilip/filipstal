@@ -7,6 +7,7 @@ import { venisonWithCeleriacPuree } from "./venison-with-celeriac-puree";
 import { pommesDarphin } from "./pommes-darphin";
 import { grilledSalmonChiliMayo } from "./grilled-salmon-chili-mayo";
 import { hummusSalsaVerde } from "./hummus-salsa-verde";
+import { swedishFlagPavlova } from "./swedish-flag-pavlova";
 
 export const allRecipes: Recipe[] = [
   breadedFish,
@@ -17,6 +18,7 @@ export const allRecipes: Recipe[] = [
   pommesDarphin,
   grilledSalmonChiliMayo,
   hummusSalsaVerde,
+  swedishFlagPavlova,
 ];
 
 export function getRecipeBySlug(slug: string): Recipe | undefined {
