@@ -11,7 +11,7 @@ export const swedishFlagPavlova: Recipe = {
   tags: ["Summer", "Dessert", "Celebration"],
   images: [
     {
-      src: "",
+      src: "/recipes/swedish-flag-pavlova.jpg",
       alt: "Sheet pavlova decorated as the Swedish flag — a yellow lemon-curd cross over fields of blueberries on whipped cream",
     },
   ],
