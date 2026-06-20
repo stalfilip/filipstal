@@ -19,7 +19,7 @@ export const swedishFlagPavlova: Recipe = {
     { amount: 6, item: "Egg whites, room temperature", group: "Meringue base" },
     { amount: 350, note: "g", item: "Caster sugar", group: "Meringue base" },
     { amount: 1, unit: "tbsp", item: "Cornstarch", group: "Meringue base" },
-    { amount: 1, unit: "tsp", item: "White wine vinegar (or lemon juice)", group: "Meringue base" },
+    { amount: 1, unit: "tsp", item: "White wine vinegar, or lemon juice (or ½ tsp 12% distilled vinegar / scant ¼ tsp 24% vinegar essence)", group: "Meringue base" },
     { amount: 1, unit: "tsp", item: "Vanilla sugar (optional)", group: "Meringue base" },
 
     { amount: 6, item: "Egg yolks", group: "Lemon curd" },
